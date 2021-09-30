@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="fastapi-lazy",
+    name="fastapi_lazy",
     version=version,
     author="Yasser Tahiri",
     author_email="yasserth19@gmail.com",
@@ -14,7 +14,9 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/yezz123/fastapi-lazy",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(
+        exclude=["tests", "tests.*", "*.tests", "*.tests.*"],
+    ),
     include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 3",
