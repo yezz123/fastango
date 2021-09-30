@@ -1,11 +1,12 @@
 from os import environ
 
-from auth.model import LazyUser
 from fastapi.exceptions import HTTPException
 from fastapi.security import HTTPBearer
 from jwt import decode
 from starlette.requests import Request
 from starlette.status import HTTP_403_FORBIDDEN
+
+from fastapi_lazy.auth.model import LazyUser
 
 KEY = environ.get("KEY", "secret")
 
