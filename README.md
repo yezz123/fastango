@@ -1,6 +1,5 @@
 # Fastapi-lazy 🦥
 
-[![Downloads](https://pepy.tech/badge/fastapi-lazy/month)](https://pepy.tech/project/fastapi-lazy)
 [![PyPI version](https://badge.fury.io/py/fastapi-lazy.svg)](https://badge.fury.io/py/fastapi-lazy)
 
 Utilities that you use in various projects made in FastAPI.
