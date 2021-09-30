@@ -21,7 +21,7 @@ setuptools.setup(
         "License :: OSI Approved :: Unlicense",
         "Operating System :: OS Independent",
     ],
-    requires=["fastapi", "databases", "motor", "pyjwt", "aioredis==2.0.0"],
+    install_requires=["fastapi", "databases", "motor", "pyjwt", "aioredis==2.0.0"],
     package_dir={"": "fastapi-lazy"},
     packages=setuptools.find_packages(where="fastapi-lazy"),
     python_requires=">=3.7",
