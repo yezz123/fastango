@@ -18,6 +18,7 @@ Utilities that you use in various projects made in FastAPI.
 
 - Use the data contained in the JWT
 - Use the username contained in the JWT and fetch data.
+- Create User Models based on Pydantic.
 - Multi Database Support:
   - Creates the dependency to be used to connect to the Postgresql.
   - Creates the dependency to be used to connect to the MongoDB.
