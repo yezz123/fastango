@@ -3,12 +3,24 @@ from os import environ
 from fastapi.exceptions import HTTPException
 from fastapi.security import HTTPBearer
 from jwt import decode
+from pydantic import BaseModel
 from starlette.requests import Request
 from starlette.status import HTTP_403_FORBIDDEN
 
-from fastapi_lazy.auth.model import LazyUser
-
 KEY = environ.get("KEY", "secret")
+
+# Authenticate Model
+class LazyUser(BaseModel):
+    """
+    A lazy user model.
+
+    Args:
+        BaseModel (pydantic.BaseModel): Base model class.
+    """
+
+    username: str
+    password: str
+    role: str
 
 
 class LazyAuth(HTTPBearer):
