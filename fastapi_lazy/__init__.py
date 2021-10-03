@@ -8,10 +8,12 @@ import fastapi_lazy.auth
 import fastapi_lazy.database
 import fastapi_lazy.generator
 import fastapi_lazy.models
+import fastapi_lazy.utils
 
 __all__ = [
     "auth",
     "database",
     "generator",
     "models",
+    "utils",
 ]

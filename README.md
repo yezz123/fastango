@@ -3,6 +3,7 @@
 ![lazy](https://user-images.githubusercontent.com/52716203/135530036-3ed731f6-e0db-4de6-8667-9af75656f2f4.png)
 
 [![PyPI version](https://badge.fury.io/py/fastapi-lazy.svg)](https://badge.fury.io/py/fastapi-lazy)
+[![Downloads](https://pepy.tech/badge/fastapi-lazy)](https://pepy.tech/project/fastapi-lazy)
 
 Utilities that you use in various projects made in FastAPI.
 
@@ -29,6 +30,8 @@ Utilities that you use in various projects made in FastAPI.
 - Support UUID generator:
   - Create a custom UUID4 using the current timestamp.
   - Create a JWT token creator & verifier.
+- Create a simple Password hash using `hashlib`.
+- Create an Email Validator.
 
 ## Development 🚧
 

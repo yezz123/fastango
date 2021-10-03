@@ -24,5 +24,12 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.7",
-    install_requires=["fastapi", "databases", "motor", "pyjwt", "aioredis==2.0.0"],
+    install_requires=[
+        "fastapi",
+        "databases",
+        "motor",
+        "pyjwt",
+        "aioredis==2.0.0",
+        "email-validator",
+    ],
 )
