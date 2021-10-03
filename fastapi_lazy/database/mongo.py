@@ -2,7 +2,7 @@ from os import environ
 
 from motor.motor_asyncio import AsyncIOMotorClient
 
-link = f'mongodb://{environ["MONGO_USER"]}:{environ["MONGO_PASSWORD"]}@mongo:27017/'
+link = f'mongodb://{environ["MONGO_USER"]}:{environ["MONGO_PASSWORD"]}@{environ["MONGO_HOST"]}:{environ["MONGO_PORT"]}/{environ["MONGO_DB"]}'
 
 # MongoDB
 async def get_mongo() -> AsyncIOMotorClient:
