@@ -1,3 +1,3 @@
-from fastapi_lazy.auth import auth
+from fastapi_lazy.auth import auth, token
 
-__all__ = ["auth"]
+__all__ = ["auth", "token"]

@@ -32,6 +32,9 @@ Utilities that you use in various projects made in FastAPI.
   - Create a JWT token creator & verifier.
 - Create a simple Password hash using `hashlib`.
 - Create an Email Validator.
+- Provide a Token Creator for login after adding a new package `passlib`.
+- Add A simple Crud file for MongoDB Provider.
+  - Soon will be added for Postgresql Provider, & SQLite Provider.
 
 ## Development 🚧
 
