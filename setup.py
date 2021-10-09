@@ -19,9 +19,14 @@ setuptools.setup(
     ),
     include_package_data=True,
     classifiers=[
-        "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        "Intended Audience :: Developers",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3 :: Only",
+        "Topic :: Internet :: WWW/HTTP :: Session",
     ],
     python_requires=">=3.7",
     install_requires=[
@@ -31,5 +36,6 @@ setuptools.setup(
         "pyjwt",
         "aioredis==2.0.0",
         "email-validator",
+        "passlib",
     ],
 )
