@@ -1,3 +1,3 @@
-from fastapi_lazy.generator import generator, token
+from fastapi_lazy.generator import crud, generator, token
 
-__all__ = ["generator", "token"]
+__all__ = ["generator", "token", "crud"]
