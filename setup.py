@@ -1,13 +1,13 @@
 import setuptools
 
-version = "1.2.2"
+__version__ = "1.2.3"
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="fastapi_lazy",
-    version=version,
+    version=__version__,
     author="Yasser Tahiri",
     author_email="yasserth19@gmail.com",
     description="Utilities that you use in various projects made in FastAPI",
