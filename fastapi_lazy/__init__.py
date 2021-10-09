@@ -1,4 +1,4 @@
-__version__ = "1.2.2"
+__version__ = "2.0.0"
 
 """
     fastapi-lazy - A Lazy package-starter for FastAPI applications.
