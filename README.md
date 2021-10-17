@@ -2,10 +2,17 @@
 
 ![lazy](https://user-images.githubusercontent.com/52716203/135530036-3ed731f6-e0db-4de6-8667-9af75656f2f4.png)
 
-[![PyPI version](https://badge.fury.io/py/fastapi-lazy.svg)](https://badge.fury.io/py/fastapi-lazy)
-[![Downloads](https://pepy.tech/badge/fastapi-lazy)](https://pepy.tech/project/fastapi-lazy)
+<p align="center">
+    <em>Utilities that you use in various projects made in FastAPI.</em>
+</p>
 
-Utilities that you use in various projects made in FastAPI.
+[![PyPI version](https://badge.fury.io/py/fastapi-lazy.svg)](https://badge.fury.io/py/fastapi-lazy)
+[![Downloads](https://pepy.tech/badge/fastapi-lazy/month)](https://pepy.tech/project/fastapi-lazy)
+[![Downloads](https://pepy.tech/badge/fastapi-lazy/week)](https://pepy.tech/project/fastapi-lazy)
+[![Language](https://img.shields.io/badge/Language-Python-green?style)](https://github.com/yezz123)
+[![framework](https://img.shields.io/badge/Framework-FastAPI-blue?style)](https://fastapi.tiangolo.com/)
+[![Star Badge](https://img.shields.io/static/v1?label=%F0%9F%8C%9F&message=If%20Useful&style=style=flatcolor=BC4E99)](https://github.com/yezz123/fastapi-lazy)
+[![Pypi](https://img.shields.io/pypi/pyversions/fastapi-lazy.svg?color=%2334D058)](https://pypi.org/project/fastapi-lazy)
 
 ---
 
