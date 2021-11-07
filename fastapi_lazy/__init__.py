@@ -7,6 +7,7 @@ __version__ = "1.2.4"
 import fastapi_lazy.auth
 import fastapi_lazy.database
 import fastapi_lazy.generator
+import fastapi_lazy.graphQL
 import fastapi_lazy.models
 import fastapi_lazy.utils
 
@@ -16,4 +17,5 @@ __all__ = [
     "generator",
     "models",
     "utils",
+    "graphQL",
 ]
