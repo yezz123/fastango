@@ -49,15 +49,19 @@ class LazyAuth(HTTPBearer):
             user = decode(cred.credentials, key=KEY, algorithms="HS256")
         except Exception as exp:
             """
-                If the token is invalid, raise an HTTPException.
+            If the token is invalid, raise an HTTPException.
 
-                Raises:
-                    HTTPException: If the token is invalid.
+            Raises:
+                HTTPException: If the token is invalid.
             """
             raise HTTPException(
-                status_code=HTTP_403_FORBIDDEN, detail=str(exp),
+                status_code=HTTP_403_FORBIDDEN,
+                detail=str(exp),
             )
         return LazyUser(**user)
 
 
-authentication_lazy = LazyAuth(scheme_name="Bearer", auto_error=False,)
+authentication_lazy = LazyAuth(
+    scheme_name="Bearer",
+    auto_error=False,
+)
