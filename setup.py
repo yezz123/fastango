@@ -36,7 +36,7 @@ setuptools.setup(
         "databases",
         "motor",
         "pyjwt",
-        "aioredis==2.0.0",
+        "aioredis==2.0.1",
         "email-validator",
         "passlib",
     ],

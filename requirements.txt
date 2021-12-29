@@ -4,4 +4,4 @@ motor
 pyjwt
 email-validator
 passlib
-aioredis==2.0.0
+aioredis==2.0.1
