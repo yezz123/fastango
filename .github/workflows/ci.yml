@@ -27,7 +27,7 @@ jobs:
           uv-venv: ".venv"
 
       - name: Install Dependencies
-        run: uv pip install -e .[test]
+        run: uv pip install -e .[lint]
 
       - name: Run Pre-commit
         run: bash scripts/format.sh
@@ -67,7 +67,7 @@ jobs:
         run: uv pip freeze
 
       - name: Test with pytest - ${{ matrix.os }} - py${{ matrix.python-version }}
-        run: bash scripts/test.sh
+        run: bash scripts/tests.sh
         env:
           CONTEXT: ${{ runner.os }}-py${{ matrix.python-version }}-with-deps
 
