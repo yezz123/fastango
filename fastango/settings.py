@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, List
 
 from pydantic import ImportString
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -25,7 +25,7 @@ class APISettings(BaseSettings):
     disable_docs: bool = False
 
     enable_error_handlers: bool = True
-    services: list[ImportString] = []
+    services: List[ImportString] = []
     simplify_openapi_ids: bool = True
 
     @property
