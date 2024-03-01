@@ -1,0 +1,134 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fastango"
+description = "Simplifies class-based views for more organized and maintainable code in FastAPI."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+authors = [
+    { name = "Yasser Tahiri", email = "hello@yezz.me" },
+]
+keywords = [
+    "FastAPI",
+    "Pydantic",
+    "Model",
+    "View",
+    "FastAPI-View",
+    "FastAPI-Model",
+]
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    # Update the following list as the project matures
+    "Development Status :: 4 - Beta",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Framework :: FastAPI",
+    "Framework :: AsyncIO",
+    "Framework :: Pydantic",
+    "Framework :: Pydantic :: 2",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Internet :: WWW/HTTP :: Session",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "fastapi >=0.65.2,<0.111.0",
+    "pydantic >=2.0.0,<2.6.3",
+    "pydantic-settings >=2.1.0",
+    "orjson >=3.8.4,<4.0.0",
+]
+
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/yezz123/fastango"
+Funding = 'https://github.com/sponsors/yezz123'
+
+[project.optional-dependencies]
+lint = [
+    "pre-commit>=3.6.2,<4.0.0",
+    "ruff>=0.2.2"
+]
+test = [
+    "requests==2.28.2",
+    "pytest==7.3.1",
+    "pytest-asyncio == 0.21.0",
+    "pytest-cov==4.0.0",
+    "pytest-pretty==1.2.0",
+]
+
+[tool.hatch.version]
+path = "fastango/__init__.py"
+
+[tool.ruff.lint]
+mccabe = { max-complexity = 14 }
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "C",  # flake8-comprehensions
+    "B",  # flake8-bugbear
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401","E501"]
+"fastango/settings.py" = ["E501"]
+"fastango/serializer.py" = ["E501"]
+
+[tool.ruff.lint.isort]
+known-third-party = ["pydantic", "typing_extensions"]
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
+
+[tool.coverage.run]
+source = ["fastango"]
+branch = true
+context = '${CONTEXT}'
+
+[tool.coverage.paths]
+source = [
+    'fastango/',
+    '/Users/runner/work/fastango/fastango/authx/',
+    'D:\a\fastango\fastango\fastango',
+]
+
+[tool.coverage.report]
+precision = 2
+exclude_lines = [
+    'pragma: no cover',
+    'raise NotImplementedError',
+    'if TYPE_CHECKING:',
+    '@overload',
+]
+
+[tool.mypy]
+strict = true
+plugins = 'pydantic.mypy'
+
+[tool.pytest.ini_options]
+testpaths = 'tests'
+log_cli = "1"
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(message)s (%(filename)s:%(lineno)s)"
+log_cli_date_format= "%Y-%m-%d %H:%M:%S"
+asyncio_mode= "auto"
+filterwarnings = [
+    'error',
+    'ignore::DeprecationWarning',
+]

@@ -1,0 +1,89 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: {}
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: setup uv
+        uses: yezz123/setup-uv@v3
+        with:
+          uv-venv: ".venv"
+
+      - name: Install Dependencies
+        run: uv pip install -e .[lint]
+
+      - name: Run Pre-commit
+        run: bash scripts/format.sh
+
+  tests:
+
+    name: test py${{ matrix.python-version }} on ${{ matrix.os }}
+
+    runs-on: ${{ matrix.os }}-latest
+
+
+    strategy:
+
+      matrix:
+
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+        os: [ubuntu, macos, windows]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: setup UV
+        uses: yezz123/setup-uv@v3
+        with:
+          uv-venv: ".venv"
+
+      - name: Install Dependencies
+        run: uv pip install -e .[test]
+
+      - name: Freeze Dependencies
+        run: uv pip freeze
+
+      - name: Test with pytest - ${{ matrix.os }} - py${{ matrix.python-version }}
+        run: bash scripts/tests.sh
+        env:
+          CONTEXT: ${{ runner.os }}-py${{ matrix.python-version }}-with-deps
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage.xml
+
+  # https://github.com/marketplace/actions/alls-green#why used for branch protection checks
+  check:
+    if: always()
+    needs: [lint, tests]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
