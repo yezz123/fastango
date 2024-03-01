@@ -1,4 +1,4 @@
-from typing import Any, List
+from typing import Any, Dict, List
 
 from pydantic import ImportString
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -29,7 +29,7 @@ class APISettings(BaseSettings):
     simplify_openapi_ids: bool = True
 
     @property
-    def fastapi_kwargs(self) -> dict[str, Any]:
+    def fastapi_kwargs(self) -> Dict[str, Any]:
         """
         This property returns a dictionary of the most commonly used keyword arguments when initializing a FastAPI instance.
         If `self.disable_docs` is True, the various docs-related arguments are disabled, preventing your spec from being
@@ -39,7 +39,7 @@ class APISettings(BaseSettings):
             None
 
         Returns:
-            dict[str, Any]: A dictionary of the most commonly used keyword arguments when initializing a FastAPI instance
+            Dict[str, Any]: A dictionary of the most commonly used keyword arguments when initializing a FastAPI instance
             If `self.disable_docs` is True, the various docs-related arguments are disabled, preventing your spec from being
             published.
         """
@@ -59,12 +59,12 @@ class APISettings(BaseSettings):
         return fastapi_kwargs
 
     @property
-    def config_kwargs(self) -> dict[str, Any]:
+    def config_kwargs(self) -> Dict[str, Any]:
         """
         Returns a dictionary of configuration keyword arguments based on the current settings.
 
         Returns:
-            dict[str, Any]: A dictionary containing the configuration keyword arguments.
+            Dict[str, Any]: A dictionary containing the configuration keyword arguments.
         """
         return {
             "enable_error_handlers": self.enable_error_handlers,
