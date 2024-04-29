@@ -3,6 +3,7 @@ import pickle
 
 log = logging.getLogger(__name__)
 
+
 # Get from redis
 async def get_from_redis(redis, key: str):
     """

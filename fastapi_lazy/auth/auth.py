@@ -9,6 +9,7 @@ from starlette.status import HTTP_403_FORBIDDEN
 
 KEY = environ.get("KEY", "secret")
 
+
 # Authenticate Model
 class LazyUser(BaseModel):
     """
