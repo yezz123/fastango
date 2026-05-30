@@ -1,0 +1,1 @@
+"""Fastango tests."""
