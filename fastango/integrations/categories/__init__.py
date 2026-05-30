@@ -1,0 +1,1 @@
+"""Categorized integration catalog modules."""
