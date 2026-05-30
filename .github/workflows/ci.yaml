@@ -67,7 +67,7 @@ jobs:
         run: uv sync --group test --all-extras
 
       - name: Test with pytest - ${{ matrix.os }} - py${{ matrix.python-version }}
-        run: bash scripts/test.sh
+        run: bash scripts/tests.sh
         env:
           CONTEXT: ${{ runner.os }}-py${{ matrix.python-version }}-with-deps
 
