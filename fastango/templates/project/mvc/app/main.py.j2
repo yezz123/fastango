@@ -1,0 +1,46 @@
+"""FastAPI application entrypoint."""
+
+from fastapi import FastAPI
+from fastapi.responses import ORJSONResponse
+
+{% for import_line in main_imports %}
+{{ import_line }}
+{% endfor %}
+{% if "authx" in enabled_integrations %}
+from app.api.routes.auth import router as auth_router
+{% endif %}
+{% if "stripe" in enabled_integrations %}
+from app.api.routes.billing import router as billing_router
+{% endif %}
+from app.api.routes.health import router as health_router
+from app.core.config import settings
+from app.core.logging import configure_logging
+{% if "authx" in enabled_integrations %}
+from app.core.security import security
+{% endif %}
+{% for import_line in router_imports %}
+{{ import_line }}
+{% endfor %}
+
+configure_logging()
+
+app = FastAPI(
+    title=settings.app_name,
+    default_response_class=ORJSONResponse,
+    openapi_tags={{ openapi_tags }},
+)
+
+{% for statement in app_hooks %}
+{{ statement }}
+{% endfor %}
+{% if "authx" in enabled_integrations %}
+security.handle_errors(app)
+app.include_router(auth_router)
+{% endif %}
+app.include_router(health_router)
+{% if "stripe" in enabled_integrations %}
+app.include_router(billing_router)
+{% endif %}
+{% for statement in router_includes %}
+{{ statement }}
+{% endfor %}

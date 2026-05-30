@@ -1,0 +1,45 @@
+"""FastAPI application entrypoint."""
+
+from fastapi import Depends, FastAPI
+from fastapi.responses import ORJSONResponse
+
+{% for import_line in main_imports %}
+{{ import_line }}
+{% endfor %}
+{% if "authx" in enabled_integrations %}
+from app.auth import security
+{% endif %}
+from app.routes import router
+from app.settings import settings
+{% if "stripe" in enabled_integrations %}
+from app.stripe_routes import router as billing_router
+{% endif %}
+{% for import_line in router_imports %}
+{{ import_line }}
+{% endfor %}
+
+app = FastAPI(
+    title=settings.app_name,
+    default_response_class=ORJSONResponse,
+    openapi_tags={{ openapi_tags }},
+)
+
+{% for statement in app_hooks %}
+{{ statement }}
+{% endfor %}
+{% if "authx" in enabled_integrations %}
+security.handle_errors(app)
+{% endif %}
+app.include_router(router)
+{% if "stripe" in enabled_integrations %}
+app.include_router(billing_router)
+{% endif %}
+{% for statement in router_includes %}
+{{ statement }}
+{% endfor %}
+
+{% if "authx" in enabled_integrations %}
+@app.get("/protected", tags=["auth"])
+async def protected(_: object = Depends(security.access_token_required)) -> dict[str, str]:
+    return {"message": "You are authenticated."}
+{% endif %}

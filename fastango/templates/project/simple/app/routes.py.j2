@@ -1,0 +1,18 @@
+"""Application routes."""
+
+from fastapi import APIRouter
+
+from app.schemas import HealthResponse
+from app.settings import settings
+
+router = APIRouter()
+
+
+@router.get("/", tags=["root"])
+async def root() -> dict[str, str]:
+    return {"message": "Welcome to {{ project_name }}."}
+
+
+@router.get("/health", response_model=HealthResponse, tags=["health"])
+async def health() -> HealthResponse:
+    return HealthResponse(status="ok", environment=settings.environment)
