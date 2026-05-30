@@ -28,15 +28,6 @@
   <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT license">
 </p>
 
-<div align="center">
-
-| Project | Status |
-| --- | --- |
-| CI | [![Continuous Integration](https://github.com/yezz123/fastango/actions/workflows/ci.yaml/badge.svg)](https://github.com/yezz123/fastango/actions/workflows/ci.yaml) [![Codecov](https://codecov.io/gh/yezz123/fastango/branch/main/graph/badge.svg?token=8ZKMD474LT)](https://codecov.io/gh/yezz123/fastango) |
-| Meta | [![Package version](https://img.shields.io/pypi/v/fastango?color=%2334D058&label=pypi%20package)](https://pypi.org/project/fastango) [![Downloads](https://static.pepy.tech/badge/fastango)](https://pepy.tech/project/fastango) [![Pydantic Version 2](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json)](https://pydantic.dev) [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) |
-
-</div>
-
 <!-- markdownlint-enable MD033 -->
 
 Fastango is a `uv`-first CLI for generating FastAPI projects with polished terminal flows,
