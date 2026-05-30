@@ -1,17 +1,43 @@
-# Fastango
-
 <!-- markdownlint-disable MD033 -->
 <p align="center">
   <img src="https://raw.githubusercontent.com/yezz123/fastango/fa66a81b925515f2a3777c91d66132b8998b9421/docs/logo.png" alt="Fastango logo" width="240">
 </p>
-<!-- markdownlint-enable MD033 -->
 
-![Python](https://img.shields.io/badge/python-3.10%2B-blue)
-![FastAPI](https://img.shields.io/badge/framework-FastAPI-009688)
-![Pydantic](https://img.shields.io/badge/pydantic-v2-e92063)
-![uv](https://img.shields.io/badge/package%20manager-uv-654ff0)
-![Ruff](https://img.shields.io/badge/linting-ruff-d7ff64)
-![License](https://img.shields.io/badge/license-MIT-green)
+<p align="center">
+  <a href="https://github.com/yezz123/fastango/actions/workflows/ci.yaml">
+    <img src="https://github.com/yezz123/fastango/actions/workflows/ci.yaml/badge.svg" alt="Continuous Integration">
+  </a>
+  <a href="https://codecov.io/gh/yezz123/fastango">
+    <img src="https://codecov.io/gh/yezz123/fastango/branch/main/graph/badge.svg?token=8ZKMD474LT" alt="Codecov">
+  </a>
+  <a href="https://pypi.org/project/fastango">
+    <img src="https://img.shields.io/pypi/v/fastango?color=%2334D058&label=pypi%20package" alt="PyPI package">
+  </a>
+  <a href="https://pepy.tech/project/fastango">
+    <img src="https://static.pepy.tech/badge/fastango" alt="Downloads">
+  </a>
+  <a href="https://pydantic.dev">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json" alt="Pydantic Version 2">
+  </a>
+  <a href="https://github.com/astral-sh/ruff">
+    <img src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json" alt="Ruff">
+  </a>
+  <img src="https://img.shields.io/badge/python-3.10%2B-blue" alt="Python 3.10+">
+  <img src="https://img.shields.io/badge/framework-FastAPI-009688" alt="FastAPI">
+  <img src="https://img.shields.io/badge/package%20manager-uv-654ff0" alt="uv">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="MIT license">
+</p>
+
+<div align="center">
+
+| Project | Status |
+| --- | --- |
+| CI | [![Continuous Integration](https://github.com/yezz123/fastango/actions/workflows/ci.yaml/badge.svg)](https://github.com/yezz123/fastango/actions/workflows/ci.yaml) [![Codecov](https://codecov.io/gh/yezz123/fastango/branch/main/graph/badge.svg?token=8ZKMD474LT)](https://codecov.io/gh/yezz123/fastango) |
+| Meta | [![Package version](https://img.shields.io/pypi/v/fastango?color=%2334D058&label=pypi%20package)](https://pypi.org/project/fastango) [![Downloads](https://static.pepy.tech/badge/fastango)](https://pepy.tech/project/fastango) [![Pydantic Version 2](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/pydantic/pydantic/main/docs/badge/v2.json)](https://pydantic.dev) [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) |
+
+</div>
+
+<!-- markdownlint-enable MD033 -->
 
 Fastango is a `uv`-first CLI for generating FastAPI projects with polished terminal flows,
 safe AI-assisted planning, selectable templates, and a growing integration catalog.
