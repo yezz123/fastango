@@ -76,9 +76,6 @@ path = "fastango/__init__.py"
 [tool.hatch.build.targets.wheel]
 packages = ["fastango"]
 
-[tool.hatch.build.targets.wheel.force-include]
-"fastango/templates" = "fastango/templates"
-
 [tool.ruff]
 line-length = 100
 target-version = "py310"
