@@ -24,6 +24,9 @@ class Settings(BaseSettings):
 {% if "redis" in enabled_integrations %}
     redis_url: str = "redis://localhost:6379/0"
 {% endif %}
+{% for field in settings_fields %}
+    {{ field }}
+{% endfor %}
 
 
 @lru_cache

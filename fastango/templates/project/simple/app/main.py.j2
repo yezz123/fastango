@@ -6,6 +6,9 @@ from fastapi.responses import ORJSONResponse
 {% for import_line in main_imports %}
 {{ import_line }}
 {% endfor %}
+{% for import_line in lifespan_imports %}
+{{ import_line }}
+{% endfor %}
 {% if "authx" in enabled_integrations %}
 from app.auth import security
 {% endif %}
@@ -25,6 +28,12 @@ app = FastAPI(
 )
 
 {% for statement in app_hooks %}
+{{ statement }}
+{% endfor %}
+{% for statement in middleware_hooks %}
+{{ statement }}
+{% endfor %}
+{% for statement in lifespan_hooks %}
 {{ statement }}
 {% endfor %}
 {% if "authx" in enabled_integrations %}
