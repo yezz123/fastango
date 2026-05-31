@@ -184,6 +184,7 @@ uv run fastango integrations --json
 | Observability | OpenTelemetry, Prometheus, Structlog, Logfire, health checks, audit logs. |
 | API protocols | OpenAPI, GraphQL, WebSockets, SSE, signed webhooks, versioning. |
 | Deployment and dev tools | Docker, Compose overlays, Kubernetes, GitHub Actions, pre-commit, Ruff, mypy, pytest, Dependabot. |
+| Code-template packs | Production hooks, SaaS routes, workers, realtime routes, storage services, and AI/RAG service boundaries. |
 
 ## Generation Skills
 
