@@ -82,12 +82,23 @@ def test_catalog_integration_router_hooks_without_docs() -> None:
             tags=(),
         ),
         openapi_tags=(("custom", "Custom tag"),),
+        settings_fields=("custom_setting: str = 'x'",),
+        middleware_hooks=("app.add_middleware(CustomMiddleware)",),
+        lifespan_hooks=(("from app.custom import startup", "startup()"),),
         router_imports=("from app.custom import router",),
         router_includes=("app.include_router(router)",),
+        compose_services=("  custom:\n    image: custom\n",),
+        compose_volumes=("  custom-data:\n",),
     )
     plan = ScaffoldPlan(ProjectConfig(project_name="demo"))
 
     integration.apply(plan)
 
     assert plan.openapi_tags == [{"name": "custom", "description": "Custom tag"}]
+    assert plan.settings_fields == ["custom_setting: str = 'x'"]
+    assert plan.middleware_hooks == ["app.add_middleware(CustomMiddleware)"]
+    assert plan.lifespan_imports == ["from app.custom import startup"]
+    assert plan.lifespan_hooks == ["startup()"]
     assert plan.router_imports == ["from app.custom import router"]
+    assert plan.compose_services == ["  custom:\n    image: custom\n"]
+    assert plan.compose_volumes == ["  custom-data:\n"]

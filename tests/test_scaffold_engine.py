@@ -93,9 +93,25 @@ def test_plan_add_router_and_file_spec() -> None:
     plan.add_main_import("import os")
     plan.add_app_hook("pass")
     plan.add_app_hook("pass")
+    plan.add_settings_field("field: str = 'x'")
+    plan.add_settings_field("field: str = 'x'")
+    plan.add_middleware_hook("app.add_middleware(X)")
+    plan.add_middleware_hook("app.add_middleware(X)")
+    plan.add_lifespan_hook("from app.x import start", "start()")
+    plan.add_lifespan_hook("from app.x import start", "start()")
+    plan.add_compose_service("  svc:\n    image: svc\n")
+    plan.add_compose_service("  svc:\n    image: svc\n")
+    plan.add_compose_volume("  svc-data:\n")
+    plan.add_compose_volume("  svc-data:\n")
     plan.add_router("from app.example import router", "app.include_router(router)")
     assert plan.dependencies == ["fastapi"]
     assert plan.dev_dependencies == ["pytest"]
+    assert plan.settings_fields == ["field: str = 'x'"]
+    assert plan.middleware_hooks == ["app.add_middleware(X)"]
+    assert plan.lifespan_imports == ["from app.x import start"]
+    assert plan.lifespan_hooks == ["start()"]
+    assert plan.compose_services == ["  svc:\n    image: svc\n"]
+    assert plan.compose_volumes == ["  svc-data:\n"]
 
 
 def test_renderer_rejects_unsafe_template_path() -> None:
