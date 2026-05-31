@@ -32,6 +32,16 @@ Built-in integrations implement `fastango.integrations.base.Integration` and mut
 
 The catalog is metadata-driven and split by category under `fastango/integrations/categories/`. Each integration has a stable name, label, category, tags, maturity, aliases, requirements, and conflicts.
 
+Code-template integrations can now add settings fields, middleware hooks, lifespan hooks, routers, Docker Compose services, tests, README sections, and `llms.txt` guidance through `ScaffoldPlan` instead of ad hoc string edits.
+
+Major code-template packs:
+
+- Production: `sqlalchemy-async`, `alembic-code`, `redis-cache-code`, `healthchecks-code`, `prometheus-code`, `sentry-fastapi`, `request-id`, `makefile-full`, `precommit-full`.
+- SaaS: `jwt-auth`, `rbac`, `teams-code`, `stripe-subscriptions`, `password-reset`, `email-verification`, `admin-code`, `audit-log-code`.
+- Workers: `celery-worker-code`, `celery-beat-code`, `flower-code`, `background-tasks-code`, `apscheduler-code`.
+- Realtime and storage: `websockets-code`, `sse-code`, `uploads-local-code`, `s3-uploads-code`, `r2-uploads-code`, `gcs-uploads-code`, `minio-compose`.
+- AI: `pydantic-ai-code`, `litellm-code`, `openai-chat-code`, `anthropic-chat-code`, `rag-pgvector`, `qdrant-rag-code`, `prompt-store`, `conversation-memory`.
+
 Curated presets:
 
 - `api-starter`: OpenAPI, tests, CORS, Ruff, and pre-commit.
