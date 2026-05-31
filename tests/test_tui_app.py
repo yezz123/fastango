@@ -31,3 +31,12 @@ def test_playground_builds_project_config(monkeypatch: MonkeyPatch, tmp_path: Pa
     assert config.presets == ("api-starter",)
     assert config.integrations == ("redis",)
     assert config.create_git is True
+
+
+def test_playground_cancel_on_final_confirm(monkeypatch: MonkeyPatch, tmp_path: Path) -> None:
+    answers = iter(["demo-api", "demo_api", "simple", "3.12", "", "", "", ""])
+    confirms = iter([False, False])
+    monkeypatch.setattr(Prompt, "ask", lambda *_, **__: next(answers))
+    monkeypatch.setattr(Confirm, "ask", lambda *_, **__: next(confirms))
+
+    assert run_playground(registry=IntegrationRegistry.builtins(), output_dir=tmp_path) is None
