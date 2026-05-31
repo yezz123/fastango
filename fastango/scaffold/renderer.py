@@ -14,15 +14,15 @@ from fastango.scaffold.plan import RenderedFile, ScaffoldPlan
 
 class TraversableResource(Protocol):
     @property
-    def name(self) -> str: ...
+    def name(self) -> str: ...  # pragma: no cover
 
-    def iterdir(self) -> Iterable[TraversableResource]: ...
+    def iterdir(self) -> Iterable[TraversableResource]: ...  # pragma: no cover
 
-    def is_dir(self) -> bool: ...
+    def is_dir(self) -> bool: ...  # pragma: no cover
 
-    def is_file(self) -> bool: ...
+    def is_file(self) -> bool: ...  # pragma: no cover
 
-    def read_text(self, encoding: str | None = None) -> str: ...
+    def read_text(self, encoding: str | None = None) -> str: ...  # pragma: no cover
 
 
 class TemplateRenderer:
