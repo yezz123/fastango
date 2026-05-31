@@ -7,6 +7,7 @@ from typing import cast
 
 from fastango.integrations.base import Integration, IntegrationMaturity
 from fastango.integrations.categories.ai import AI_INTEGRATIONS
+from fastango.integrations.categories.ai_code import AI_CODE_INTEGRATIONS
 from fastango.integrations.categories.api import API_INTEGRATIONS
 from fastango.integrations.categories.auth import AUTH_INTEGRATIONS
 from fastango.integrations.categories.cache_queue import CACHE_QUEUE_INTEGRATIONS
@@ -16,7 +17,11 @@ from fastango.integrations.categories.devtools import DEVTOOLS_INTEGRATIONS
 from fastango.integrations.categories.observability import OBSERVABILITY_INTEGRATIONS
 from fastango.integrations.categories.payments import PAYMENTS_INTEGRATIONS
 from fastango.integrations.categories.product import PRODUCT_INTEGRATIONS
+from fastango.integrations.categories.production import PRODUCTION_INTEGRATIONS
+from fastango.integrations.categories.realtime_storage import REALTIME_STORAGE_INTEGRATIONS
+from fastango.integrations.categories.saas_code import SAAS_CODE_INTEGRATIONS
 from fastango.integrations.categories.storage import STORAGE_INTEGRATIONS
+from fastango.integrations.categories.workers import WORKER_INTEGRATIONS
 from fastango.scaffold.plan import EnvVar, ScaffoldPlan
 
 
@@ -400,6 +405,15 @@ DOCKER_COMPOSE = """services:
       - "8000:8000"
     env_file:
       - .env
+{% for service in compose_services %}
+{{ service }}
+{% endfor %}
+{% if compose_volumes %}
+volumes:
+{% for volume in compose_volumes %}
+{{ volume }}
+{% endfor %}
+{% endif %}
 """
 
 DOCKERIGNORE = """.venv
@@ -430,5 +444,10 @@ BUILTIN_INTEGRATIONS = cast(
         *DEPLOY_INTEGRATIONS,
         *DEVTOOLS_INTEGRATIONS,
         *PRODUCT_INTEGRATIONS,
+        *PRODUCTION_INTEGRATIONS,
+        *SAAS_CODE_INTEGRATIONS,
+        *WORKER_INTEGRATIONS,
+        *REALTIME_STORAGE_INTEGRATIONS,
+        *AI_CODE_INTEGRATIONS,
     ),
 )
