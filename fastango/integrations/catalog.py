@@ -36,8 +36,13 @@ class CatalogIntegration:
     openapi_tags: tuple[tuple[str, str], ...] = ()
     main_imports: tuple[str, ...] = ()
     app_hooks: tuple[str, ...] = ()
+    settings_fields: tuple[str, ...] = ()
+    middleware_hooks: tuple[str, ...] = ()
+    lifespan_hooks: tuple[tuple[str, str], ...] = ()
     router_imports: tuple[str, ...] = ()
     router_includes: tuple[str, ...] = ()
+    compose_services: tuple[str, ...] = ()
+    compose_volumes: tuple[str, ...] = ()
 
     @property
     def name(self) -> str:
@@ -94,10 +99,20 @@ class CatalogIntegration:
             plan.add_main_import(import_line)
         for statement in self.app_hooks:
             plan.add_app_hook(statement)
+        for settings_field in self.settings_fields:
+            plan.add_settings_field(settings_field)
+        for statement in self.middleware_hooks:
+            plan.add_middleware_hook(statement)
+        for import_line, statement in self.lifespan_hooks:
+            plan.add_lifespan_hook(import_line, statement)
         for import_line, include_statement in zip(
             self.router_imports, self.router_includes, strict=False
         ):
             plan.add_router(import_line, include_statement)
+        for service in self.compose_services:
+            plan.add_compose_service(service)
+        for volume in self.compose_volumes:
+            plan.add_compose_volume(volume)
         if self.readme:
             plan.add_readme_section(self.readme)
         if self.llms:
@@ -188,6 +203,13 @@ def docs_integration(
     openapi_tags: tuple[tuple[str, str], ...] = (),
     main_imports: tuple[str, ...] = (),
     app_hooks: tuple[str, ...] = (),
+    settings_fields: tuple[str, ...] = (),
+    middleware_hooks: tuple[str, ...] = (),
+    lifespan_hooks: tuple[tuple[str, str], ...] = (),
+    router_imports: tuple[str, ...] = (),
+    router_includes: tuple[str, ...] = (),
+    compose_services: tuple[str, ...] = (),
+    compose_volumes: tuple[str, ...] = (),
 ) -> CatalogIntegration:
     """Create a docs-first integration with consistent README and llms guidance."""
 
@@ -221,4 +243,11 @@ def docs_integration(
         openapi_tags=openapi_tags,
         main_imports=main_imports,
         app_hooks=app_hooks,
+        settings_fields=settings_fields,
+        middleware_hooks=middleware_hooks,
+        lifespan_hooks=lifespan_hooks,
+        router_imports=router_imports,
+        router_includes=router_includes,
+        compose_services=compose_services,
+        compose_volumes=compose_volumes,
     )
