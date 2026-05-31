@@ -2,6 +2,7 @@ from pathlib import Path
 
 from fastango.scaffold.config import ProjectConfig
 from fastango.scaffold.engine import ScaffoldEngine
+from fastango.scaffold.plan import ScaffoldPlan
 from fastango.scaffold.preview import build_preview
 from fastango.scaffold.registry import IntegrationError, IntegrationRegistry
 
@@ -67,3 +68,26 @@ def test_cors_hook_renders_into_generated_main(tmp_path: Path) -> None:
     main_py = (result.target_dir / "app/main.py").read_text(encoding="utf-8")
     assert "CORSMiddleware" in main_py
     assert "app.add_middleware" in main_py
+
+
+def test_catalog_integration_router_hooks_without_docs() -> None:
+    from fastango.integrations.catalog import CatalogIntegration, IntegrationMetadata
+
+    integration = CatalogIntegration(
+        metadata=IntegrationMetadata(
+            name="router",
+            label="Router",
+            category="test",
+            description="Router",
+            tags=(),
+        ),
+        openapi_tags=(("custom", "Custom tag"),),
+        router_imports=("from app.custom import router",),
+        router_includes=("app.include_router(router)",),
+    )
+    plan = ScaffoldPlan(ProjectConfig(project_name="demo"))
+
+    integration.apply(plan)
+
+    assert plan.openapi_tags == [{"name": "custom", "description": "Custom tag"}]
+    assert plan.router_imports == ["from app.custom import router"]
